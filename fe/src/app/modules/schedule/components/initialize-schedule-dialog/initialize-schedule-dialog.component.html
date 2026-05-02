@@ -1,0 +1,77 @@
+<h2 mat-dialog-title>Dienstplan initialisieren</h2>
+
+<mat-dialog-content>
+  <div class="dialog-content-wrapper">
+    <form [formGroup]="form" class="schedule-form">
+      <!-- Start Date -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Startdatum</mat-label>
+        <input 
+          matInput 
+          [matDatepicker]="startDatePicker" 
+          formControlName="start_date" 
+          required
+          placeholder="Startdatum auswählen">
+        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
+        <mat-error *ngIf="form.get('start_date')?.hasError('required')">
+          Startdatum ist erforderlich
+        </mat-error>
+      </mat-form-field>
+
+      <!-- End Date -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Enddatum</mat-label>
+        <input 
+          matInput 
+          [matDatepicker]="endDatePicker" 
+          formControlName="end_date" 
+          required
+          placeholder="Enddatum auswählen">
+        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+        <mat-error *ngIf="form.get('end_date')?.hasError('required')">
+          Enddatum ist erforderlich
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Department Selection -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Abteilung (Optional)</mat-label>
+        <mat-select 
+          formControlName="department_id"
+          panelClass="department-dropdown-panel"
+          disableOptionCentering>
+          <mat-option value="">Alle Abteilungen</mat-option>
+          <mat-option *ngFor="let dept of departments" [value]="dept.id">
+            {{ dept.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Info Message -->
+      <div class="info-message">
+        <mat-icon>info</mat-icon>
+        <span>Dies erstellt zugewiesene Schichten für alle Schichtvorlagen in den ausgewählten Abteilungen für jeden Tag im Zeitraum.</span>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button 
+    mat-button 
+    (click)="onCancel()"
+    type="button">
+    Abbrechen
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSubmit()"
+    [disabled]="form.invalid || submitting"
+    type="button">
+    <mat-spinner *ngIf="submitting" diameter="20" class="action-spinner"></mat-spinner>
+    {{ submitting ? 'Initialisiere...' : 'Initialisieren' }}
+  </button>
+</mat-dialog-actions>

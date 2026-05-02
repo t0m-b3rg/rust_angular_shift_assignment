@@ -1,0 +1,55 @@
+.employees-container {
+  .employees-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    h1 {
+      margin: 0;
+      color: #333;
+    }
+  }
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
+
+  .error-message {
+    color: #d32f2f;
+    padding: 16px;
+    background-color: #ffebee;
+    border-radius: 4px;
+    margin: 16px 0;
+  }
+
+  .employees-table {
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 16px 0;
+
+    th {
+      background-color: #f5f5f5;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 16px;
+    }
+
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+  }
+
+  .no-data {
+    text-align: center;
+    padding: 32px;
+    color: #999;
+  }
+}

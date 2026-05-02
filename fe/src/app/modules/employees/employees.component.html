@@ -1,0 +1,57 @@
+<div class="employees-container">
+  <div class="employees-header">
+    <h1>Mitarbeiterverwaltung</h1>
+    <button mat-raised-button color="primary" (click)="onAddEmployee()" disabled>
+      <mat-icon>add</mat-icon>
+      Mitarbeiter hinzufügen
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <table mat-table [dataSource]="employees" class="employees-table">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <!-- Rolle Column -->
+    <ng-container matColumnDef="rolle">
+      <th mat-header-cell *matHeaderCellDef>Rolle</th>
+      <td mat-cell *matCellDef="let element">{{ element.rolle }}</td>
+    </ng-container>
+
+    <!-- Qualifikation Column -->
+    <ng-container matColumnDef="qualifikation">
+      <th mat-header-cell *matHeaderCellDef>Qualifikation</th>
+      <td mat-cell *matCellDef="let element">{{ element.qualifikation }}</td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Aktionen</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button matTooltip="Bearbeiten" (click)="onEditEmployee(element)" disabled>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Löschen" (click)="onDeleteEmployee(element.id)" disabled>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <p *ngIf="!loading && employees.length === 0" class="no-data">
+    Keine Mitarbeiter gefunden
+  </p>
+</div>

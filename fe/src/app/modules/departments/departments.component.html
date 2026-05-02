@@ -1,0 +1,47 @@
+<div class="departments-container">
+  <div class="departments-header">
+    <h1>Abteilungsverwaltung</h1>
+    <button mat-raised-button color="primary" (click)="onAddDepartment()" disabled>
+      <mat-icon>add</mat-icon>
+      Abteilung hinzufügen
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="departments-grid">
+    <div *ngFor="let dept of departments" 
+         class="department-card"
+         [ngStyle]="{'border-left-color': getDepartmentColor(dept.id).border, 'background-color': getDepartmentColor(dept.id).background}">
+      <div class="department-content">
+        <div class="department-info">
+          <div class="department-name" [ngStyle]="{'color': getDepartmentColor(dept.id).text}">
+            <mat-icon>business</mat-icon>
+            {{ dept.name }}
+          </div>
+          <div class="department-bereich" [ngStyle]="{'color': getDepartmentColor(dept.id).text}">
+            {{ dept.bereich }}
+          </div>
+        </div>
+        <div class="department-actions">
+          <button mat-icon-button matTooltip="Bearbeiten" (click)="onEditDepartment(dept)" disabled>
+            <mat-icon [ngStyle]="{'color': getDepartmentColor(dept.id).text}">edit</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Löschen" (click)="onDeleteDepartment(dept.id)" disabled>
+            <mat-icon [ngStyle]="{'color': getDepartmentColor(dept.id).text}">delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p *ngIf="!loading && departments.length === 0" class="no-data">
+    Keine Abteilungen gefunden
+  </p>
+</div>

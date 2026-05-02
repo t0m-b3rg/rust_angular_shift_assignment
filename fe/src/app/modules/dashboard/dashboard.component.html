@@ -1,0 +1,41 @@
+<div class="dashboard-container">
+  <h1>Übersicht</h1>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="stats-grid">
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-value">{{ employeeCount }}</div>
+        <div class="stat-label">Mitarbeiter</div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-value">{{ departmentCount }}</div>
+        <div class="stat-label">Abteilungen</div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-value">{{ shiftCount }}</div>
+        <div class="stat-label">Schichtvorlagen</div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <mat-card-content>
+        <div class="stat-value">{{ assignedShiftCount }}</div>
+        <div class="stat-label">Zugewiesene Schichten</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

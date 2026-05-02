@@ -1,0 +1,279 @@
+{
+  "pflegeheimName": "Seniorenwohnsitz Sonnenschein",
+  "datum": "2026-04-30",
+  "stationen": [
+    {
+      "id": "ST01",
+      "name": "Station A - Erdgeschoss",
+      "bereich": "Pflegebedürftige",
+      "pflegegrad": 2,
+      "mitarbeiter_ids": []
+    },
+    {
+      "id": "ST02",
+      "name": "Station B - 1. OG",
+      "bereich": "Demenz",
+      "pflegegrad": 3,
+      "mitarbeiter_ids": []
+    },
+    {
+      "id": "ST03",
+      "name": "Station C - 2. OG",
+      "bereich": "Normale Betreuung",
+      "pflegegrad": 1,
+      "mitarbeiter_ids": []
+    }
+  ],
+  "mitarbeiter": [
+    {
+      "id": "M01",
+      "name": "Petra Müller",
+      "rolle": "Pflegefachkraft",
+      "qualifikation": "Pflegefachkraft"
+    },
+    {
+      "id": "M02",
+      "name": "Hans Schmidt",
+      "rolle": "Pflegehelfer",
+      "qualifikation": "Pflegehelfer"
+    },
+    {
+      "id": "M03",
+      "name": "Lisa Weber",
+      "rolle": "Pflegefachkraft",
+      "qualifikation": "Pflegefachkraft"
+    },
+    {
+      "id": "M04",
+      "name": "Thomas Bauer",
+      "rolle": "Pflegefachkraft",
+      "qualifikation": "Pflegefachkraft"
+    },
+    {
+      "id": "M05",
+      "name": "Anna Fischer",
+      "rolle": "Pflegehelfer",
+      "qualifikation": "Pflegehelfer"
+    },
+    {
+      "id": "M06",
+      "name": "Michael Hoffmann",
+      "rolle": "Pflegefachkraft",
+      "qualifikation": "Assistenzkraft"
+    },
+    {
+      "id": "M07",
+      "name": "Silvia Rossi",
+      "rolle": "Pflegefachkraft",
+      "qualifikation": "Pflegefachkraft"
+    },
+    {
+      "id": "M08",
+      "name": "Johannes Wagner",
+      "rolle": "Pflegehelfer",
+      "qualifikation": "Pflegehelfer"
+    },
+    {
+      "id": "M09",
+      "name": "Katrin Neumann",
+      "rolle": "Pflegefachkraft",
+      "qualifikation": "Assistenzkraft"
+    }
+  ],
+  "arbeitsschichten": [
+    {
+      "id": "S01",
+      "typ": "Früh",
+      "start": "06:00",
+      "ende": "10:00",
+      "station_id": "ST01",
+      "arbeitsstunden": 8,
+      "arbeitszeit_faktor_nach_pflege_grad_und_schicht": 4
+    },
+    {
+      "id": "S02",
+      "typ": "Mittel",
+      "start": "10:00",
+      "ende": "16:00",
+      "station_id": "ST01",
+      "arbeitsstunden": 12,
+      "arbeitszeit_faktor_nach_pflege_grad_und_schicht": 4
+    },
+    {
+      "id": "S03",
+      "typ": "Spät",
+      "start": "16:00",
+      "ende": "20:00",
+      "station_id": "ST01",
+      "arbeitsstunden": 8,
+      "arbeitszeit_faktor_nach_pflege_grad_und_schicht": 2
+    },
+    {
+      "id": "S04",
+      "typ": "Nacht",
+      "start": "22:00",
+      "ende": "06:00",
+      "station_id": "ST01",
+      "arbeitsstunden": 16,
+      "arbeitszeit_faktor_nach_pflege_grad_und_schicht": 1
+    },
+    {
+      "id": "S05",
+      "typ": "Früh",
+      "start": "06:00",
+      "ende": "10:00",
+      "station_id": "ST02",
+      "arbeitsstunden": 12,
+      "arbeitszeit_faktor_nach_pflege_grad_und_schicht": 6
+    },
+    {
+      "id": "S06",
+      "typ": "Mittel",
+      "start": "10:00",
+      "ende": "16:00",
+      "station_id": "ST02",
+      "arbeitsstunden": 18,
+      "arbeitszeit_faktor_nach_pflege_grad_und_schicht": 6
+    },
+    {
+      "id": "S07",
+      "typ": "Spät",
+      "start": "16:00",
+      "ende": "20:00",
+      "station_id": "ST02",
+      "arbeitsstunden": 12,
+      "arbeitszeit_faktor_nach_pflege_grad_und_schicht": 3
+    },
+    {
+      "id": "S08",
+      "typ": "Nacht",
+      "start": "22:00",
+      "ende": "06:00",
+      "station_id": "ST02",
+      "arbeitsstunden": 24,
+      "arbeitszeit_faktor_nach_pflege_grad_und_schicht": 2
+    },
+    {
+      "id": "S09",
+      "typ": "Früh",
+      "start": "06:00",
+      "ende": "10:00",
+      "station_id": "ST03",
+      "arbeitsstunden": 4,
+      "arbeitszeit_faktor_nach_pflege_grad_und_schicht": 2
+    },
+    {
+      "id": "S10",
+      "typ": "Mittel",
+      "start": "10:00",
+      "ende": "16:00",
+      "station_id": "ST03",
+      "arbeitsstunden": 6,
+      "arbeitszeit_faktor_nach_pflege_grad_und_schicht": 2
+    },
+    {
+      "id": "S11",
+      "typ": "Spät",
+      "start": "16:00",
+      "ende": "20:00",
+      "station_id": "ST03",
+      "arbeitsstunden": 4,
+      "arbeitszeit_faktor_nach_pflege_grad_und_schicht": 1
+    },
+    {
+      "id": "S12",
+      "typ": "Nacht",
+      "start": "22:00",
+      "ende": "06:00",
+      "station_id": "ST03",
+      "arbeitsstunden": 8,
+      "arbeitszeit_faktor_nach_pflege_grad_und_schicht": 1
+    }
+  ],
+  "assigned_shifts": [
+    {
+      "id": "AS01",
+      "datum": "2026-05-01",
+      "arbeitsschichten_id": "S01",
+      "mitarbeiter_ids": [],
+      "state": "unassigned"
+    },
+    {
+      "id": "AS02",
+      "datum": "2026-05-01",
+      "arbeitsschichten_id": "S02",
+      "mitarbeiter_ids": [],
+      "state": "unassigned"
+    },
+    {
+      "id": "AS03",
+      "datum": "2026-05-01",
+      "arbeitsschichten_id": "S03",
+      "mitarbeiter_ids": [],
+      "state": "unassigned"
+    },
+    {
+      "id": "AS04",
+      "datum": "2026-05-01",
+      "arbeitsschichten_id": "S04",
+      "mitarbeiter_ids": [],
+      "state": "unassigned"
+    },
+    {
+      "id": "AS05",
+      "datum": "2026-05-01",
+      "arbeitsschichten_id": "S05",
+      "mitarbeiter_ids": [],
+      "state": "unassigned"
+    },
+    {
+      "id": "AS06",
+      "datum": "2026-05-01",
+      "arbeitsschichten_id": "S06",
+      "mitarbeiter_ids": [],
+      "state": "unassigned"
+    },
+    {
+      "id": "AS07",
+      "datum": "2026-05-01",
+      "arbeitsschichten_id": "S07",
+      "mitarbeiter_ids": [],
+      "state": "unassigned"
+    },
+    {
+      "id": "AS08",
+      "datum": "2026-05-01",
+      "arbeitsschichten_id": "S08",
+      "mitarbeiter_ids": [],
+      "state": "unassigned"
+    },
+    {
+      "id": "AS09",
+      "datum": "2026-05-01",
+      "arbeitsschichten_id": "S09",
+      "mitarbeiter_ids": [],
+      "state": "unassigned"
+    },
+    {
+      "id": "AS10",
+      "datum": "2026-05-01",
+      "arbeitsschichten_id": "S10",
+      "mitarbeiter_ids": [],
+      "state": "unassigned"
+    },
+    {
+      "id": "AS11",
+      "datum": "2026-05-01",
+      "arbeitsschichten_id": "S11",
+      "mitarbeiter_ids": [],
+      "state": "unassigned"
+    },
+    {
+      "id": "AS12",
+      "datum": "2026-05-01",
+      "arbeitsschichten_id": "S12",
+      "mitarbeiter_ids": [],
+      "state": "unassigned"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+.shifts-container {
+  .shifts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    h1 {
+      margin: 0;
+      color: #333;
+    }
+  }
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
+
+  .error-message {
+    color: #d32f2f;
+    padding: 16px;
+    background-color: #ffebee;
+    border-radius: 4px;
+    margin: 16px 0;
+  }
+
+  .departments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .department-group {
+    border-left: 4px solid;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .department-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+      .department-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .department-title {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 18px;
+          font-weight: 600;
+
+          mat-icon {
+            font-size: 24px;
+            width: 24px;
+            height: 24px;
+          }
+
+          .dept-name {
+            // inherit color from parent
+          }
+
+          .shift-count {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.8;
+          }
+        }
+
+        .department-subtitle {
+          font-size: 14px;
+          font-weight: 400;
+          opacity: 0.7;
+          margin-left: 32px;
+        }
+      }
+    }
+  }
+
+  .shifts-table {
+    width: 100%;
+    background: transparent;
+
+    th {
+      background-color: rgba(255, 255, 255, 0.5);
+      font-weight: 600;
+    }
+
+    td {
+      padding: 12px 16px;
+    }
+
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  .no-data {
+    text-align: center;
+    padding: 32px;
+    color: #999;
+  }
+}

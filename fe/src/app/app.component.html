@@ -1,0 +1,45 @@
+<mat-toolbar color="primary" class="app-toolbar">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="app-title">{{ title }}</span>
+  <span class="spacer"></span>
+  <button mat-icon-button matTooltip="Einstellungen">
+    <mat-icon>settings</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="app-container">
+  <mat-sidenav #sidenav mode="side" [opened]="sidenavOpen" class="app-sidenav">
+    <mat-nav-list>
+      <mat-list-item routerLink="/dashboard" routerLinkActive="active">
+        <mat-icon matListItemIcon>dashboard</mat-icon>
+        <span matListItemTitle>Übersicht</span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/employees" routerLinkActive="active">
+        <mat-icon matListItemIcon>people</mat-icon>
+        <span matListItemTitle>Mitarbeiter</span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/departments" routerLinkActive="active">
+        <mat-icon matListItemIcon>business</mat-icon>
+        <span matListItemTitle>Abteilungen</span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/shifts" routerLinkActive="active">
+        <mat-icon matListItemIcon>schedule</mat-icon>
+        <span matListItemTitle>Schichten</span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/schedule" routerLinkActive="active">
+        <mat-icon matListItemIcon>event</mat-icon>
+        <span matListItemTitle>Dienstplan</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="app-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

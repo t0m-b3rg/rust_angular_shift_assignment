@@ -1,0 +1,81 @@
+<div class="shifts-container">
+  <div class="shifts-header">
+    <h1>Schichtvorlagenverwaltung</h1>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="departments-list">
+    <div *ngFor="let deptId of getDepartmentIds()" 
+         class="department-group" 
+         [ngStyle]="{'border-left-color': getDepartmentColor(deptId).border, 'background-color': getDepartmentColor(deptId).background}">
+      <div class="department-header" [ngStyle]="{'color': getDepartmentColor(deptId).text}">
+        <div class="department-info">
+          <div class="department-title">
+            <mat-icon>business</mat-icon>
+            <span class="dept-name">{{ getDepartmentName(deptId) }}</span>
+            <span class="shift-count">({{ shiftsByDepartment[deptId].shifts.length }} Schichten)</span>
+          </div>
+          <div class="department-subtitle" *ngIf="getDepartmentBereich(deptId)">
+            {{ getDepartmentBereich(deptId) }}
+          </div>
+        </div>
+        <button mat-mini-fab color="primary" matTooltip="Schicht hinzufügen" (click)="onAddShift(deptId)" disabled>
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      
+      <table mat-table [dataSource]="shiftsByDepartment[deptId].shifts" class="shifts-table">
+        <!-- Type Column -->
+        <ng-container matColumnDef="typ">
+          <th mat-header-cell *matHeaderCellDef>Typ</th>
+          <td mat-cell *matCellDef="let element">{{ element.typ }}</td>
+        </ng-container>
+
+        <!-- Start Time Column -->
+        <ng-container matColumnDef="start_time">
+          <th mat-header-cell *matHeaderCellDef>Startzeit</th>
+          <td mat-cell *matCellDef="let element">{{ element.start_time }}</td>
+        </ng-container>
+
+        <!-- End Time Column -->
+        <ng-container matColumnDef="end_time">
+          <th mat-header-cell *matHeaderCellDef>Endzeit</th>
+          <td mat-cell *matCellDef="let element">{{ element.end_time }}</td>
+        </ng-container>
+
+        <!-- Work Hours Column -->
+        <ng-container matColumnDef="arbeitsstunden">
+          <th mat-header-cell *matHeaderCellDef>Arbeitsstunden</th>
+          <td mat-cell *matCellDef="let element">{{ element.arbeitsstunden }}</td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Aktionen</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button matTooltip="Bearbeiten" (click)="onEditShift(element)" disabled>
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip="Löschen" (click)="onDeleteShift(element.id)" disabled>
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+
+  <p *ngIf="!loading && shifts.length === 0" class="no-data">
+    Keine Schichten gefunden
+  </p>
+</div>

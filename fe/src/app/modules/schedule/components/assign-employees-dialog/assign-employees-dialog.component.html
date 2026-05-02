@@ -1,0 +1,87 @@
+<h2 mat-dialog-title>Mitarbeiter zur Schicht zuweisen</h2>
+
+<mat-dialog-content>
+  <div class="dialog-info">
+    <div class="info-row">
+      <span class="info-label">Datum:</span>
+      <span class="info-value">{{ data.assignedShift.datum }}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Abteilung:</span>
+      <span class="info-value">{{ data.departmentName }}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Schichttyp:</span>
+      <span class="info-value">{{ data.shiftInfo?.typ }}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Zeit:</span>
+      <span class="info-value">{{ data.shiftInfo?.start_time }} - {{ data.shiftInfo?.end_time }}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Benötigte Stunden:</span>
+      <span class="info-value">{{ data.shiftInfo?.arbeitsstunden }}h</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Abdeckung:</span>
+      <span class="info-value hours-calculation" [class.satisfied]="isCoverageSatisfied()" [class.unsatisfied]="!isCoverageSatisfied()">
+        {{ calculateCoverageHours() }}h / {{ data.shiftInfo?.arbeitsstunden }}h
+        <span class="coverage-info">({{ getSelectedCount() }} × 8h)</span>
+        <span *ngIf="getHoursDifference() !== 0" class="hours-diff" [class.positive]="getHoursDifference() > 0" [class.negative]="getHoursDifference() < 0">
+          {{ getHoursDifference() > 0 ? '+' : '' }}{{ getHoursDifference() }}h
+        </span>
+      </span>
+    </div>
+    <div class="info-row" *ngIf="data.stateColor">
+      <span class="info-label">Status:</span>
+      <div class="state-badge" [ngStyle]="{'background-color': data.stateColor.background, 'border-color': data.stateColor.border}">
+        <mat-icon class="state-icon" [ngStyle]="{'color': data.stateColor.text}">{{ data.stateColor.icon }}</mat-icon>
+        <span [ngStyle]="{'color': data.stateColor.text}">{{ data.assignedShift.state }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-buttons">
+    <button mat-stroked-button (click)="selectAll()" [disabled]="loading || submitting">
+      Alle auswählen
+    </button>
+    <button mat-stroked-button (click)="clearAll()" [disabled]="loading || submitting">
+      Auswahl aufheben
+    </button>
+    <span class="selected-count">{{ getSelectedCount() }} ausgewählt</span>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Mitarbeiter werden geladen...</p>
+  </div>
+
+  <div *ngIf="!loading" class="employees-list">
+    <mat-selection-list [disabled]="submitting">
+      <mat-list-option
+        *ngFor="let employee of employees"
+        [value]="employee.id"
+        [selected]="isEmployeeSelected(employee.id)"
+        (click)="toggleEmployee(employee)">
+        <div class="employee-option">
+          <div class="employee-name">{{ employee.name }}</div>
+          <div class="employee-details">
+            <span class="role">{{ employee.rolle }}</span>
+            <span class="qualification">{{ employee.qualifikation }}</span>
+          </div>
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()" [disabled]="submitting">
+    Abbrechen
+  </button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="submitting || getSelectedCount() === 0">
+    <mat-icon *ngIf="!submitting">check</mat-icon>
+    <mat-spinner *ngIf="submitting" diameter="20" class="button-spinner"></mat-spinner>
+    {{ submitting ? 'Wird zugewiesen...' : 'Mitarbeiter zuweisen' }}
+  </button>
+</mat-dialog-actions>
